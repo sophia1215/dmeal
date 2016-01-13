@@ -41,6 +41,7 @@ gem 'money-rails'
 gem 'searchkick'
 gem 'mini_magick'
 gem 'inherited_resources'
+gem 'figaro'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
