@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     delete 'signout', to: "org_people/sessions#destroy"
   end
 
-  resources :catalogues 
+  resources :catalogues
+  resources :org_people
   root to: "catalogues#index"
 end
