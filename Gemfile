@@ -9,7 +9,8 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
 gem 'sass-rails'
-gem 'font-awesome-sass-rails'
+# Font-awesome icon
+gem 'font-awesome-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
