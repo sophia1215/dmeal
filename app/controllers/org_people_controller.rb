@@ -3,6 +3,7 @@ class OrgPeopleController < ApplicationController
     # All the setup that is needed to build the edit page view
     @person = OrgPerson.find(params[:id])
     @contactInfo = OrgContact.find_or_initialize_by(org_person_id: params[:id])
+    # byebug
     @contactInfo[:email] = current_org_person.email
     @person.org_contacts.build(@contactInfo.attributes)
   end
@@ -21,11 +22,13 @@ class OrgPeopleController < ApplicationController
     @person = OrgPerson.find_by(id: current_org_person.id) #Find the OrgPerson corresponding to org_person_id FK
     # Using the org_person_id find/create the record and assing the attributes to @contactInfo
     @contactInfo = OrgContact.find_or_initialize_by(org_person_id: current_org_person.id).attributes
+    # byebug
     @contactInfo[:email] = current_org_person.email
     @person.org_contacts.build(@contactInfo) #Build the form using @contactInfo
     if !@org_ca[:org_company_id].nil?
         OrgPerson.update(current_org_person.id ,org_company_id: @org_ca[:org_company_id])
     end
+    # byebug
     # Find contacts record or create them if necessary
     @contact = OrgContact.find_or_create_by(org_person_id: current_org_person.id)
         
