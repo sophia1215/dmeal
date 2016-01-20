@@ -44,7 +44,7 @@ gem 'searchkick'
 gem 'mini_magick'
 gem 'inherited_resources'
 gem 'figaro'
-
+gem 'geocoder'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

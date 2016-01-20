@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160113212524) do
     t.text     "description"
     t.string   "verification_doc"
     t.boolean  "verified"
+    t.integer  "typ_fee_id"
     t.integer  "typ_company_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
