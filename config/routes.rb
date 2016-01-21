@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'org_companies/new'
+  # get 'org_companies/edit'
+  # get 'org_companies/show'
+
   devise_for :org_people, :controllers => {
     :registrations => "org_people/registrations",
     :sessions => "org_people/sessions",
@@ -14,5 +18,9 @@ Rails.application.routes.draw do
 
   resources :catalogues
   resources :org_people
+  resources :org_companies
+  
   root to: "catalogues#index"
+
+  match '/org_register', to:'org_companies#new', via: 'get'
 end
