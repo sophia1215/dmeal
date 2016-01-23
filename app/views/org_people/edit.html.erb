@@ -1,4 +1,9 @@
 <% provide(:title, "Edit user")%>
+
+<% content_for(:sidebar) do %>
+  <%= render "layouts/sidebar" %>
+<% end %>
+
 <div class="col-md-7 col-md-offset-3 main">
   <center><h1>Update your profile</h1></center>
   <%= form_for(@person) do |f| %>
