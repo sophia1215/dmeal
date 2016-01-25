@@ -26,7 +26,7 @@ class OrgPeopleController < ApplicationController
     @contactInfo[:email] = current_org_person.email
     @person.org_contacts.build(@contactInfo) #Build the form using @contactInfo
     if !@org_ca[:org_company_id].nil?
-        OrgPerson.update(current_org_person.id ,org_company_id: @org_ca[:org_company_id])
+      OrgPerson.update(current_org_person.id ,org_company_id: @org_ca[:org_company_id])
     end
     # byebug
     # Find contacts record or create them if necessary
@@ -34,14 +34,28 @@ class OrgPeopleController < ApplicationController
         
     # Try to save it, if it saves, then redirect to the edit page with success
     if @contact.update_attributes(@org_ca) 
-        # If this user also controls the information of the company (i.e. COO) then also update company email
-        OrgContact.where(email: current_org_person.email).update_all(email: @org_ca["email"]) 
-        # If there is a company, update the person record to reflect the company too.
-        flash[:success] = "Profile updated"
-        redirect_to edit_org_person_path(@person.id)
-      else # Failed. Re-render the page as unsucessful
-          render :edit
+      # If this user also controls the information of the company (i.e. COO) then also update company email
+      OrgContact.where(email: current_org_person.email).update_all(email: @org_ca["email"]) 
+      # If there is a company, update the person record to reflect the company too.
+      flash[:success] = "Profile updated"
+      redirect_to edit_org_person_path(@person.id)
+    else # Failed. Re-render the page as unsucessful
+      render :edit
     end
+  end
+
+  # Edits a position/role (i.e. COO, Director, Store Manager, etc.)
+  def edit_position
+    person_info = OrgPerson.find_by_id(params[:id])
+    person_info.update(typ_position_id: params[:typ_position_id], org_company_id: current_org_person.org_company_id)
+  end
+
+  # Removes a person from the company
+  def remove_from_company
+    person_info = OrgPerson.find_by_id(params[:id])
+    person_info.update(typ_position_id: 0, org_company_id: nil)
+    contact_info = OrgContact.find_by(org_person_id: params[:id])
+    contact_info.update(org_company_id: nil)      
   end
 
   private

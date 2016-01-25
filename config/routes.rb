@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # get 'org_companies/new'
-  # get 'org_companies/edit'
-  # get 'org_companies/show'
-
   devise_for :org_people, :controllers => {
     :registrations => "org_people/registrations",
     :sessions => "org_people/sessions",
@@ -15,6 +11,10 @@ Rails.application.routes.draw do
     get 'signin', to: "org_people/sessions#new"
     delete 'signout', to: "org_people/sessions#destroy"
   end
+
+  get 'org_companies/people/' => 'org_companies#people', :to => "org_companies_people"
+  post 'org_people/edit_position/' => 'org_people#edit_position', :to => "org_people_edit_position"
+  post 'org_people/remove_from_company/' => 'org_people#remove_from_company', :to => "org_people_remove_from_company"
 
   resources :catalogues
   resources :org_people
