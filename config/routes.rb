@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :org_people, :controllers => {
     :registrations => "org_people/registrations",
     :sessions => "org_people/sessions",
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :catalogues
   resources :org_people
   resources :org_companies
+  resources :org_products
   
   root to: "catalogues#index"
 

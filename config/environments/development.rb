@@ -48,3 +48,11 @@ Rails.application.configure do
   config.action_mailer.default :charset => 'utf-8'
   # config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
 end
+
+class ActionDispatch::Request
+  def ip
+    # "24.84.255.123"
+    # "172.20.10.2"
+    "42.73.140.148"
+  end
+end

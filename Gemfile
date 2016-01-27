@@ -5,6 +5,7 @@ ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
+gem 'rake'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
@@ -46,6 +47,8 @@ gem 'searchkick'
 gem 'inherited_resources'
 gem 'figaro'
 gem 'geocoder'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
